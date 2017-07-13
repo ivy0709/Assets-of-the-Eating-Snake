@@ -8,7 +8,7 @@ public class head : MonoBehaviour {
     /// <summary>
     /// 每隔多长事件运动一次，关卡变难就减少
     /// </summary>
-    public float interval = 0.6F;
+    public float interval = 0.3F;
     public float clock = 0.0F;
     public Vector3 LastPosition;
 
@@ -40,21 +40,29 @@ public class head : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.W))
         {
+			if (curDir.y == -1 && ss.BodyList.Count > 1)
+				return;
             curDir.x = 0;
             curDir.y = 1;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
+			if (curDir.y == 1 && ss.BodyList.Count > 1)
+				return;			
             curDir.x = 0;
             curDir.y = -1;
         }
         else if(Input.GetKeyDown(KeyCode.A))
         {
+			if (curDir.x == 1 && ss.BodyList.Count > 1)
+				return;
             curDir.x = -1;
             curDir.y = 0;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
+			if (curDir.x == -1 && ss.BodyList.Count > 1)
+				return;
             curDir.x = 1;
             curDir.y = 0;
         }
@@ -86,8 +94,8 @@ public class head : MonoBehaviour {
             float rx, ry;
             while (true)
             {
-                rx = Random.Range(-7, 7);
-                ry = Random.Range(-4, 4);
+                rx = Random.Range(-11, 11);
+                ry = Random.Range(-3, 3);
                 if (Mathf.Abs(Vector3.Distance(new Vector3(rx, ry, 0), transform.position)) > 2)
                     break;
             }
