@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 996e6947afb4daf4784d2c3506721dba
+labels:
+- Architecture
 timeCreated: 1499930391
 licenseType: Free
 TextureImporter:
