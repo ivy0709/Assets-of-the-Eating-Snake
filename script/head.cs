@@ -40,28 +40,28 @@ public class head : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.W))
         {
-			if (curDir.y == -1 && ss.BodyList.Count > 1)
+			if (curDir.y == -1 && ss.CurBodyCounts > 1)
 				return;
             curDir.x = 0;
             curDir.y = 1;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-			if (curDir.y == 1 && ss.BodyList.Count > 1)
+			if (curDir.y == 1 && ss.CurBodyCounts > 1)
 				return;			
             curDir.x = 0;
             curDir.y = -1;
         }
         else if(Input.GetKeyDown(KeyCode.A))
         {
-			if (curDir.x == 1 && ss.BodyList.Count > 1)
+			if (curDir.x == 1 && ss.CurBodyCounts > 1)
 				return;
             curDir.x = -1;
             curDir.y = 0;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-			if (curDir.x == -1 && ss.BodyList.Count > 1)
+			if (curDir.x == -1 && ss.CurBodyCounts > 1)
 				return;
             curDir.x = 1;
             curDir.y = 0;

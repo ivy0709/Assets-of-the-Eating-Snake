@@ -5,17 +5,16 @@ using UnityEngine;
 public class system : MonoBehaviour {
 
     private GameObject lastBody;
+    //private GameObject curBody;
 
     public GameObject BodyPrefab;
-    public List<GameObject> BodyList = new List<GameObject>();
-
+    public int CurBodyCounts;
 
 	// Use this for initialization
 	void Start () {
         lastBody = GameObject.Find("head");
-        BodyList.Add(lastBody);
+        CurBodyCounts = 1;
     }
-	
 	// Update is called once per frame
 	void Update () {
 		
@@ -23,9 +22,11 @@ public class system : MonoBehaviour {
 
     public void CreateBody()
     {
-        lastBody = (GameObject)Instantiate(BodyPrefab, BodyList[BodyList.Count - 1].transform.position, Quaternion.identity);
-        lastBody.gameObject.GetComponent<body>().TheLast = BodyList[BodyList.Count - 1];
-        lastBody.gameObject.GetComponent<body>().Idx = BodyList.Count;
-        BodyList.Add(lastBody);
+        GameObject curBody;
+        Vector3 newPos = new Vector3(lastBody.transform.position.x, lastBody.transform.position.y, lastBody.transform.position.z);
+        curBody = (GameObject)Instantiate(BodyPrefab, newPos, Quaternion.identity);
+        curBody.gameObject.GetComponent<body>().TheLast = lastBody;
+        curBody.gameObject.GetComponent<body>().Idx = ++CurBodyCounts;
+        lastBody = curBody;
     }
 }
